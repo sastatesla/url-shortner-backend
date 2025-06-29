@@ -1,22 +1,22 @@
 FROM node:20.15.0 as base
 
-
-# Set working directory
+# Set working directory inside container
 WORKDIR /usr/src/app
 
+# Install dependencies
 COPY package*.json ./
+RUN npm install
 
-RUN npm install 
-
-# Copy all files
+# Copy source code
 COPY . .
 
 RUN npx prisma generate
 
-RUN npx prisma db push
-
+# Set timezone
 ENV TZ="Asia/Kolkata"
 RUN date
 
-# Start the app
-CMD ["npm", "start"]
+COPY start.sh ./start.sh
+RUN chmod +x ./start.sh
+
+CMD ["./start.sh"]
