@@ -1,11 +1,12 @@
-# Use Node.js LTS version
-FROM node:18
+FROM node:20.15.0 as base
+
 
 # Set working directory
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm install --production
+
+RUN npm install 
 
 # Copy all files
 COPY . .
