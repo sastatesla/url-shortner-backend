@@ -2,7 +2,7 @@
 FROM node:18
 
 # Set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy package.json and install deps
 COPY package*.json ./
