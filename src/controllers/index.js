@@ -1,0 +1,1 @@
+export {default as UrlController} from './url.controller.js';
